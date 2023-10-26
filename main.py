@@ -1,10 +1,24 @@
+import chardet
+import os
 from wordWrap import wordWrap
 
-with open(r"Bulgakov.txt") as fp:
-    text = '. '.join(i.replace('\n', '') for i in fp.readlines() if i.replace('\n', ''))
+if input("1) Ввод текста вручную\n2) Указать ссылку на файл\n").strip() == '1':
+    text = input("Введите текст\n")
+else:
+    while True:
+        file = input("Введите абсолютную ссылку на файл\n")
+        if os.path.exists(file):
+            # Определение кодировки файла
+            with open(file, 'rb') as fp:
+                result = chardet.detect(fp.read())
+            with open(file, encoding=result['encoding']) as fp:
+                text = '. '.join(i.replace('\n', '') for i in fp.readlines() if i.replace('\n', ''))
+            while ".." in text:
+                text = text.replace("..", ". ")
+            break
+        else:
+            print("Файл не найден")
 
-while ".." in text:
-    text = text.replace("..", ". ")
 dd = wordWrap(text)
 
 while (wordSearch := input("Введите слово для поиска ").strip().lower()):
