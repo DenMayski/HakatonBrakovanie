@@ -2,7 +2,13 @@ import chardet
 import os
 from wordWrap import wordWrap
 
-if input("1) Ввод текста вручную\n2) Указать ссылку на файл\n").strip() == '1':
+while True:
+    choose = input("1) Ввод текста вручную\n2) Указать ссылку на файл\n").strip()
+    if choose in ['1', '2']:
+        break
+    else:
+        print("Такого действия нет")
+if choose == '1':
     text = input("Введите текст\n")
 else:
     while True:
