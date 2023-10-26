@@ -3,9 +3,7 @@ from natasha import (
     MorphVocab,
     NewsEmbedding,
     NewsMorphTagger,
-    NewsNERTagger,
     NewsSyntaxParser,
-    PER,
     Doc
 )
 

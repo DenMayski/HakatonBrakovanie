@@ -1,5 +1,7 @@
-import chardet
 import os
+
+import chardet
+
 from TextAnalyser import TextAnalyser
 
 while True:
